@@ -5,17 +5,22 @@
     gap: 100px;
 
     .imgContainer {
-        flex: 3;
+        flex: 2;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 100px;
-
+        margin-top: 10px;
+        gap: 10px;
         .mainImage {
             img {
-                width: 80vh; // Define a largura da imagem principal
+                width: 50vh; // Define a largura da imagem principal
             }
         }
+        .littleImages{
+            display: flex;
+            flex-direction: column;
+        }
+        
     }
 
     .textContainer {
@@ -30,9 +35,14 @@
             font-size: 3rem;
             margin-bottom: 0;
         }
-
+        
         p {
             margin-bottom: 5px;
+        }
+        button{
+            background-color: red;
+            width: 500px;
+            height: 50px;
         }
     }
 }

@@ -5,6 +5,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ProductPage from './Pages/productPage/ProductPage';
+import SignIn from './Pages/signIn/SignIn';
+import Register from './Pages/logIn/Register';
+import Header from './components/header/Header';
 
 function App() {
   
@@ -12,14 +15,22 @@ function App() {
     const router = createBrowserRouter([
       {
         path: "/",
-        element: (
-          <CatalogPage />
-        ),
+        element: 
+          <CatalogPage />,
       },
       {
         path: "/product/:id",
         element: <ProductPage />,
       },
+      {
+        path: "/sign-in",
+        element:<SignIn />
+      },
+      {
+        path: "/register",
+        element:<Register />
+      },
+      
     ]);
     
     return (

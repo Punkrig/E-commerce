@@ -7,10 +7,10 @@ const ProductItem = ({ product }) => {
     return (
         <div className="product-item">
             <Link to={`/product/${product.id}`}>
-                <h3>{product.name}</h3>
                 <img src={product.image} alt={product.name} />
-                <p>{product.description}</p>
-                <p>Price: {product.price}</p>
+                <p>Price: <br /> ${product.price}</p>
+                <h3>{product.name}</h3>
+                <button>Buy</button>
             </Link>
         </div>
     );
