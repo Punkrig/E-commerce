@@ -1,13 +1,32 @@
 import './App.css'
 import CatalogPage from './Pages/CatalogPage';
-function App() {
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import ProductPage from './Pages/productPage/ProductPage';
 
+function App() {
   
-  return (
-    <div>
-        <CatalogPage />
-    </div>
-);
+  
+    const router = createBrowserRouter([
+      {
+        path: "/",
+        element: (
+          <CatalogPage />
+        ),
+      },
+      {
+        path: "/product/:id",
+        element: <ProductPage />,
+      },
+    ]);
+    
+    return (
+     
+      <RouterProvider router={router} />
+    )
+
     
 }
 
