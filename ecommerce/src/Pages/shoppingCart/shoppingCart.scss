@@ -1,0 +1,41 @@
+// components/cartPage.scss
+.cartPage {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+
+            button {
+                background-color: #fff;
+                color: #ff4500;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .emptyCartMessage {
+        font-style: italic;
+        color: #666;
+    }
+}

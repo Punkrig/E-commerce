@@ -1,17 +1,16 @@
-// components/Header.js
 import React, { useState } from 'react';
 import './header.scss';
 import { Link } from 'react-router-dom';
 import { IoIosCart } from "react-icons/io";
 import { GrUserManager } from "react-icons/gr";
+import LittleCar from '../littleCar/LittleCar';
 
 const Header = () => {
-    // Estado para controlar se o usuário está logado ou não
     const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [cartItems, setCartItems] = useState([]);
 
     const handleLogout = () => {
-        // Lógica para logout (por exemplo, limpar o estado de autenticação)
-        setIsAuthenticated(true);
+        setIsAuthenticated(false);
     };
 
     return (
@@ -27,7 +26,7 @@ const Header = () => {
                     {isAuthenticated ? (
                         <>
                             <li><Link to="/profile"><GrUserManager />Profile</Link></li>
-                            <li><Link to="/littleCar"><IoIosCart /></Link></li>
+                            <li><Link to="/shop-car"><LittleCar /></Link></li>
                             <li><button onClick={handleLogout}>Logout</button></li>
                         </>
                     ) : (
@@ -36,7 +35,7 @@ const Header = () => {
                             <li><Link to="/register">Register</Link></li>
                         </>
                     )}
-                </ul>        
+                </ul>
             </div>
         </header>
     );

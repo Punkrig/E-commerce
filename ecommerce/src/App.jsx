@@ -8,6 +8,8 @@ import ProductPage from './Pages/productPage/ProductPage';
 import Login from './Pages/logIn/LogIn';
 import Cadastro from './Pages/registro/Cadatro';
 import Profile from './Pages/profile/Profile';
+import ShoppingCart from './Pages/shoppingCart/ShoppingCart';
+import SellPage from './Pages/sellPage/SellPage';
 
 function App() {
   
@@ -20,7 +22,7 @@ function App() {
       },
       {
         path: "/product/:id",
-        element: <ProductPage />,
+        element: <ProductPage  />,
       },
       {
         path: "/login",
@@ -34,7 +36,14 @@ function App() {
         path: "/profile",
         element: <Profile />
       },
-      
+      {
+        path: "/shop-car",
+        element: <ShoppingCart  />
+      },
+      {
+        path:"/sell",
+        element: <SellPage />
+      },
     ]);
     
     return (
