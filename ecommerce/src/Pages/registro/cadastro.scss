@@ -1,0 +1,104 @@
+// cadastro.scss
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #70708d;
+    border-radius: 20px;
+    padding: 40px;
+
+    .img-logo {
+        width: 400px;
+        margin-left: 57px;
+    }
+
+    form {
+        width: 50%;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+        
+        h1 {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        div {
+            position: relative;
+            margin-bottom: 20px;
+
+            .icon {
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                color: #202057;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                width: calc(100% - 40px); // Ajusta a largura
+                padding: 10px 20px 10px 40px; // Ajusta o padding para a esquerda
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                margin-left: 20px;
+                box-sizing: border-box; // Garante que o padding esteja incluído na largura
+            }
+        }
+
+        .role-selection {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-family: 'Poppins';
+            font-size: 15px;
+
+            label {
+                display: flex;
+                align-items: center;
+                color: #ffffff;
+                font-family: 'Poppins';
+                font-size: 15px;
+                margin-left: 30px;
+            }
+        }
+
+        button {
+            width: 50%;
+            padding: 10px;
+            background-color: #202057;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Poppins-02';
+            font-size: 18px;
+            cursor: pointer;
+            color: #ffffff;
+            margin-left: 130px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Poppins';
+            color: #ffffff;
+            text-decoration: none;
+
+            a {
+                text-decoration: none;
+                font-family: 'Poppins';
+                color: #202057;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+    }
+}

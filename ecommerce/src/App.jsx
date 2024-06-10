@@ -5,9 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ProductPage from './Pages/productPage/ProductPage';
-import SignIn from './Pages/signIn/SignIn';
-import Register from './Pages/logIn/Register';
-import Header from './components/header/Header';
+import Login from './Pages/logIn/LogIn';
+import Cadastro from './Pages/registro/Cadatro';
 
 function App() {
   
@@ -23,12 +22,12 @@ function App() {
         element: <ProductPage />,
       },
       {
-        path: "/sign-in",
-        element:<SignIn />
+        path: "/login",
+        element:<Login /> 
       },
       {
         path: "/register",
-        element:<Register />
+        element:<Cadastro />
       },
       
     ]);
