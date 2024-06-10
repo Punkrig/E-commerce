@@ -3,6 +3,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import "./login.scss";
 import Header from "../../components/header/Header";
+import { Link } from "react-router-dom";
 
 const Login = ({ onToggle }) => {
     const [username, setUsername] = useState("");
@@ -24,7 +25,7 @@ const Login = ({ onToggle }) => {
                     <h1>Acesse a sua conta</h1>
                     <div className="signup-link">
                         <p>
-                            Novo usuário? <a href="#" onClick={onToggle}>Criar nova conta</a>
+                            Novo usuário? <Link to={'/register'}>Criar nova conta</Link>
                         </p>
                     </div>
                     <div>

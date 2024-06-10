@@ -3,6 +3,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import "./cadastro.scss";
 import Header from "../../components/header/Header";
+import { Link } from "react-router-dom";
 const Cadastro = ({ onToggle }) => {
     const [fullName, setFullName] = useState("");
     const [matricula, setMatricula] = useState("");
@@ -89,7 +90,7 @@ const Cadastro = ({ onToggle }) => {
                     <button>Cadastrar</button>
                     <div className="login-link">
                         <p>
-                            Já tem uma conta? <a href="#" onClick={onToggle}>Acesse sua conta</a>
+                            Já tem uma conta? <Link to={'/login'}>Acesse sua conta</Link>
                         </p>
                     </div>
                 </form>

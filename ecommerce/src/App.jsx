@@ -1,5 +1,5 @@
 import './App.css'
-import CatalogPage from './Pages/CatalogPage';
+import CatalogPage from './Pages/catalog/CatalogPage';
 import {
   createBrowserRouter,
   RouterProvider,

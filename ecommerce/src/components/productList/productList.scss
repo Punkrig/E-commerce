@@ -1,23 +1,21 @@
-body {
-    margin: 0;
-}
-
 .mainProductList {
-    margin-top: 200px;
     padding: 10px;
     width: 100%;
+    min-height: 100vh; // Garante que o contêiner tenha pelo menos a altura da tela
+    display: flex;
+    flex-direction: column; // Para alinhar os itens verticalmente
+    align-items: center; // Centraliza verticalmente
 
-    .title {
-        padding: 10px;
-    }
+    
 
     .product-list {
         padding: 10px;
         display: flex;
         flex-wrap: wrap;
-        width: 100%;
+        width: 90%;
         gap: 10px;
-        
+        align-items: center;
+        justify-content: center; // Centraliza os itens horizontalmente
         .product-item {
             flex: 0 0 calc(33.33% - 20px); // Define um tamanho fixo para cada item
             padding: 5px;

@@ -1,0 +1,13 @@
+.mainCatalog {
+    .listDescription {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 0; // Remove a margem inferior
+    }
+
+    .listProdutos {
+        margin-top: 0;
+    }
+}
