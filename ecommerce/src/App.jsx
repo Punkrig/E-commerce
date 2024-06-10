@@ -7,6 +7,7 @@ import {
 import ProductPage from './Pages/productPage/ProductPage';
 import Login from './Pages/logIn/LogIn';
 import Cadastro from './Pages/registro/Cadatro';
+import Profile from './Pages/profile/Profile';
 
 function App() {
   
@@ -28,6 +29,10 @@ function App() {
       {
         path: "/register",
         element:<Cadastro />
+      },
+      {
+        path: "/profile",
+        element: <Profile />
       },
       
     ]);

@@ -1,6 +1,6 @@
 // components/Filters.jsx
 import React from 'react';
-
+import './filter.scss'
 const Filters = ({ onFilterChange }) => {
     const handleFilterChange = (e) => {
         const selectedFilter = e.target.value;

@@ -1,6 +1,6 @@
 .mainProduct {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 100px;
 
@@ -11,16 +11,17 @@
         align-items: center;
         margin-top: 10px;
         gap: 10px;
+
         .mainImage {
             img {
                 width: 50vh; // Define a largura da imagem principal
             }
         }
-        .littleImages{
+
+        .littleImages {
             display: flex;
             flex-direction: column;
         }
-        
     }
 
     .textContainer {
@@ -35,14 +36,18 @@
             font-size: 3rem;
             margin-bottom: 0;
         }
-        
+
         p {
             margin-bottom: 5px;
         }
-        button{
+
+        button {
             background-color: red;
             width: 500px;
             height: 50px;
+            cursor: pointer;
         }
     }
+
+
 }
