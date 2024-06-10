@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 
-function ShoppingCart({ cartItems, addItemToCart, removeItemFromCart }) {
+function ShoppingCart({ addItemToCart, removeItemFromCart }) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
     const calculateTotal = () => {
         if (!cartItems || cartItems.length === 0) {
             return 0;

@@ -1,4 +1,3 @@
-// pages/ProductPage.jsx
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import products from '../../data/productsData';
@@ -7,7 +6,7 @@ import Header from "../../components/header/Header";
 import SimilarProducts from "../../components/similarProducts/SimilarProducts";
 import ShoppingCart from '../shoppingCart/ShoppingCart';
 
-const ProductPage = ({ addItemToCart }) => {
+const ProductPage = () => {
     const { id } = useParams();
     const product = products.find(p => p.id === parseInt(id));
 
@@ -20,7 +19,9 @@ const ProductPage = ({ addItemToCart }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleBuyNow = () => {
-        addItemToCart(product);
+        const existingCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const updatedCartItems = [...existingCartItems, product];
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         setIsModalOpen(true);
     };
 
@@ -30,27 +31,27 @@ const ProductPage = ({ addItemToCart }) => {
 
     return (
         <>
-        <Header />
-        <div className='mainProduct'>
-            <div className="imgContainer">
-                <div className="littleImages">
-                    <img src="" alt={product.name} />
-                    <img src="" alt={product.name} />
-                    <img src="" alt={product.name} />
+            <Header />
+            <div className='mainProduct'>
+                <div className="imgContainer">
+                    <div className="littleImages">
+                        <img src="" alt={product.name} />
+                        <img src="" alt={product.name} />
+                        <img src="" alt={product.name} />
+                    </div>
+                    <div className="mainImage">
+                        <img src={product.image} alt={product.name} />
+                    </div>
                 </div>
-                <div className="mainImage">
-                    <img src={product.image} alt={product.name} />
+                <div className="textContainer">
+                    <h3>{product.name}</h3>
+                    <p>Price: {product.price}</p>
+                    <p>{product.description}</p>
+                    <button onClick={handleBuyNow}>Buy Now</button>
                 </div>
             </div>
-            <div className="textContainer">
-                <h3>{product.name}</h3>
-                <p>Price: {product.price}</p>
-                <p>{product.description}</p>
-                <button onClick={handleBuyNow}>Buy Now</button>
-            </div>
-        </div>
-        <SimilarProducts similarProducts={similarProducts} />
-        {isModalOpen && <ShoppingCart cartItems={[product]} onClose={closeModal} />}
+            <SimilarProducts similarProducts={similarProducts} />
+            {isModalOpen && <ShoppingCart onClose={closeModal} />}
         </>
     );
 };
