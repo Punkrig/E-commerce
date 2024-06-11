@@ -1,9 +1,7 @@
 :root {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #000097;
+  --olx-light-gray: #f5f5f5;
+  --olx-dark-gray: #4a4a4a;
+  --olx-purple: #f85a40;
+  --olx-light-purple: #ff9b67;
+  --olx-orange: #002f34;
 }
-
-
-
-
-

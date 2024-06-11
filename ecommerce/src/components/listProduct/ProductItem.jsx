@@ -10,7 +10,6 @@ const ProductItem = ({ product }) => {
                 <img src={product.image} alt={product.name} />
                 <p>Price: <br /> ${product.price}</p>
                 <h3>{product.name}</h3>
-                <button>Buy</button>
             </Link>
         </div>
     );

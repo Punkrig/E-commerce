@@ -1,14 +1,26 @@
+@import '../../index.css';
+
+:root {
+    --color1: #f6f6f6;
+    --color2: #e8e8e8;
+    --color3: #333333;
+    --color4: #990100;
+    --color5: #b90504;
+}
+
 .mainContainer {
     display: flex;
-    justify-content: space-between; // Distribui o espaço entre os itens
-    color: white;
+    justify-content: space-around; // Distribui o espaço entre os itens
+    color: var(--color1);
     align-items: center; // Centraliza os itens verticalmente
-    width: 100%; // Ocupa 100% da largura disponível
+    width: 98,5%; // Ocupa 100% da largura disponível
     top: 0; // Alinha o cabeçalho ao topo da página
     left: 0; // Alinha o cabeçalho à esquerda da página
     z-index: 1000; // Define a ordem de empilhamento
     margin-bottom: 100px;
-
+    background-color: var(--color4); // Cor de fundo vermelha
+    padding-left: 20px; // Adiciona um espaçamento interno à esquerda
+    height: 10vh; 
     .left {
         flex: 1; // Ocupa 1/3 do espaço disponível
         padding-right: 20px; // Adiciona um espaçamento interno à direita
@@ -20,7 +32,10 @@
         display: flex;
         align-items: center; // Centraliza verticalmente o conteúdo da classe .right
         justify-content: flex-end; // Alinha o conteúdo à direita
-
+        padding-right: 20px; // Adiciona um espaçamento interno à direita
+        margin-bottom: 10px; // Adiciona um espaçamento na parte inferior
+        margin-right: 20px; // Adiciona um espaçamento à direita
+            
         ul {
             display: flex;
             list-style-type: none; // Remove os marcadores da lista
@@ -33,8 +48,11 @@
             }
 
             a {
-                color: white; // Define a cor dos links
+                color: var(--color1); // Define a cor dos links
                 text-decoration: none; // Remove o sublinhado dos links
+                &:hover {
+                    color: var(--color5); // Muda a cor dos links ao passar o mouse
+                }
             }
         }
     }

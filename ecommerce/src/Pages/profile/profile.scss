@@ -1,12 +1,21 @@
+:root {
+    --color1: #f6f6f6;
+    --color2: #e8e8e8;
+    --color3: #333333;
+    --color4: #990100;
+    --color5: #b90504;
+    --color5-dark: darken(#b90504, 10%);
+}
+
 .profile {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
-    background-color: #3a2ae3;
+    background-color: var(--color1); // Fundo do perfil
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: wheat;
+    color: var(--color4); // Cor do texto
     text-align: center;
 
     h2 {
@@ -20,7 +29,7 @@
         border-radius: 50%;
         overflow: hidden;
         margin: 0 auto 20px; /* Centraliza a imagem */
-        border: 3px solid #fff; /* Adiciona uma borda branca ao redor da imagem */
+        border: 3px solid var(--color1); /* Adiciona uma borda branca ao redor da imagem */
 
         img {
             width: 100%;
@@ -58,8 +67,8 @@
         display: inline-block;
         padding: 10px 20px;
         font-size: 16px;
-        background-color: #007bff;
-        color: white;
+        background-color: var(--color5); // Cor do botão
+        color: var(--color1); // Cor do texto do botão
         border: none;
         border-radius: 4px;
         text-decoration: none;
@@ -67,7 +76,7 @@
         transition: background-color 0.3s;
 
         &:hover {
-            background-color: #0056b3;
+            background-color: var(--color5-dark); // Cor do botão ao passar o mouse
         }
     }
 }

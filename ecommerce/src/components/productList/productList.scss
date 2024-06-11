@@ -1,13 +1,20 @@
+:root {
+    --color1: #f6f6f6;
+    --color2: #e8e8e8;
+    --color3: #333333;
+    --color4: #990100;
+    --color5: #b90504;
+    --color5-dark: darken(#b90504, 10%);
+
+}
 .mainProductList {
     padding: 10px;
     width: 100%;
-    min-height: 100vh; // Garante que o contêiner tenha pelo menos a altura da tela
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; // Para alinhar os itens verticalmente
-    align-items: center; // Centraliza verticalmente
-
-    
-
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid brown;
     .product-list {
         padding: 10px;
         display: flex;
@@ -15,17 +22,19 @@
         width: 90%;
         gap: 10px;
         align-items: center;
-        justify-content: center; // Centraliza os itens horizontalmente
+        justify-content: center;
+
         .product-item {
-            flex: 0 0 calc(33.33% - 20px); // Define um tamanho fixo para cada item
+            flex: 0 0 calc(33.33% - 20px);
             padding: 5px;
-            margin: 0 10px 10px 0; // Adiciona margem entre os itens
-            box-sizing: border-box; // Considera a borda no cálculo do tamanho
+            margin: 0 10px 10px 0;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #3a2ae3;
+            background-color: var(--color1);
             border-radius: 10px;
+            border: 1px solid pink;
             img {
                 width: 100%;
                 height: auto;
@@ -36,31 +45,33 @@
             h3 {
                 margin: 10px 0 5px;
                 text-align: center;
+                color: var(--color4);
             }
 
             p {
                 margin: 5px 0;
                 text-align: center;
+                color: var(--color3);
             }
 
             button {
                 width: 100px;
                 padding: 10px;
-                background-color: #000097;
-                color: white;
+                background-color: var(--color5);
+                color: var(--color1);
                 border: none;
                 cursor: pointer;
                 margin-top: 10px;
                 transition: background-color 0.3s ease;
 
                 &:hover {
-                    background-color: #080180;
+                    background-color: var(--color5-dark);
                 }
             }
         }
 
         .product-item:nth-child(3n) {
-            margin-right: 0; // Remove a margem do terceiro item em cada linha
+            margin-right: 0;
         }
     }
 }

@@ -1,16 +1,18 @@
-// components/filter.scss
-
+@import '../../index.css';
 .filters {
     margin-bottom: 20px;
 
     label {
         font-weight: bold;
         margin-right: 10px;
+        color: var(--olx-dark-gray); // Usando a cor cinza escuro da OLX para o texto do label
     }
 
     select {
         padding: 5px;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--olx-light-gray); // Usando a cor cinza claro da OLX para a borda
+        background-color: var(--olx-light-purple); // Usando a cor roxa clara da OLX para o fundo
+        color: var(--olx-dark-gray); // Usando a cor cinza escuro da OLX para o texto
     }
 }

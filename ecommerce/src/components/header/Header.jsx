@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <header className='mainContainer'>
             <div className="left">
-                <h1>My Commerce</h1>
+                <h1>ShareHub</h1>
             </div>
             <div className="right">
                 <ul>

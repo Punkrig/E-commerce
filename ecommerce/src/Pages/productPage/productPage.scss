@@ -1,3 +1,12 @@
+:root {
+    --color1: #f6f6f6;
+    --color2: #e8e8e8;
+    --color3: #333333;
+    --color4: #990100;
+    --color5: #b90504;
+    --color5-dark: darken(#b90504, 10%);
+}
+
 .mainProduct {
     display: flex;
     align-items: flex-start;
@@ -35,19 +44,20 @@
             font-weight: 100;
             font-size: 3rem;
             margin-bottom: 0;
+            color: var(--color4); // Cor do texto dos títulos
         }
 
         p {
             margin-bottom: 5px;
+            color: var(--color3); // Cor do texto das descrições
         }
 
         button {
-            background-color: red;
+            background-color: var(--color4); // Cor de fundo do botão
+            color: var(--color1); // Cor do texto do botão
             width: 500px;
             height: 50px;
             cursor: pointer;
         }
     }
-
-
 }
