@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './header.scss';
 import { Link } from 'react-router-dom';
 import { IoIosCart } from "react-icons/io";
@@ -6,10 +6,18 @@ import { GrUserManager } from "react-icons/gr";
 import LittleCar from '../littleCar/LittleCar';
 
 const Header = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [cartItems, setCartItems] = useState([]);
 
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    }, []);
+
     const handleLogout = () => {
+        localStorage.removeItem('accessToken');
         setIsAuthenticated(false);
     };
 
