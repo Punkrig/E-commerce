@@ -1,55 +1,37 @@
-/* Importa o arquivo de variáveis de cores */
-:root {
-    --color1: #f6f6f6;
-    --color2: #e8e8e8;
-    --color3: #333333;
-    --color4: #990100;
-    --color5: #b90504;
-}
-
 .product-item {
-    border: 1px solid var(--color1);
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-    background-color: var(--color4);
-    color: var(--color1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
     a {
-        color: inherit;
-        text-decoration: inherit;
-    }
+        display: block;
+        text-decoration: none;
+        color: #333;
 
-    h3 {
-        margin-top: 0;
-        margin-bottom: 5px;
-        color: var(--color5);
-    }
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
 
-    img {
-        width: 100%;
-        height: auto;
-        max-height: 200px;
-        object-fit: cover;
-        border-radius: 4px;
-        margin-bottom: 10px;
-    }
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.4;
+        }
 
-    p {
-        margin-bottom: 5px;
-        color: var(--color3);
+        h3 {
+            margin: 0;
+            font-size: 18px;
+        }
     }
-
-    p:last-child {
-        margin-bottom: 0;
-    }
-   
-    &:hover {
-        background-color: var(--color1); // Muda a cor de fundo ao passar o mouse
-        color: var(--color5); // Muda a cor do texto ao passar o mouse
-    }
-    
 }

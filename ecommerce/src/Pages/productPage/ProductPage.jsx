@@ -30,7 +30,7 @@ const ProductPage = () => {
     };
 
     return (
-        <>
+        <div className="productContainer">
             <Header />
             <div className='mainProduct'>
                 <div className="imgContainer">
@@ -51,7 +51,7 @@ const ProductPage = () => {
                 </div>
             </div>
             <SimilarProducts similarProducts={similarProducts} />
-        </>
+        </div>
     );
 };
 

@@ -1,43 +1,48 @@
 .similarProducts {
-    margin-top: 50px;
-
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     h3 {
-        width: 100%;
-        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
     }
 
     .productList {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 20px;
-        width: 100%;
 
         .productItem {
-            flex: 0 0 calc(25% - 20px); /* Define o tamanho dos cards (4 cards por linha) */
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            background-color: #f6f6f6;
             padding: 10px;
-            text-align: center;
-            box-sizing: border-box; /* Inclui a borda no cálculo do tamanho */
-            margin-bottom: 20px; /* Adicione um espaçamento inferior para separar os cards */
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
 
             img {
-                width: 100%; /* Define a largura da imagem como 100% do card */
-                max-height: 300px; /* Define a altura máxima da imagem para evitar que ela fique muito alta */
-                object-fit: cover; /* Redimensiona a imagem para preencher o espaço, mantendo a proporção */
+                max-width: 100%;
+                height: auto;
                 border-radius: 5px;
                 margin-bottom: 10px;
             }
 
             p {
-                margin-bottom: 5px;
-            }
-        }
+                margin: 0;
+                font-size: 0.9rem;
 
-        a {
-            text-decoration: none;
-            color: inherit; /* Mantém a cor do texto padrão */
+                &:first-child {
+                    font-weight: bold;
+                }
+
+                &:last-child {
+                    color: #990100;
+                }
+            }
         }
     }
 }
