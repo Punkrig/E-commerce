@@ -1,17 +1,55 @@
 import React, { useState } from 'react';
 import './sellPage.scss';
 import Header from '../../components/header/Header';
+import { jwtDecode } from "jwt-decode";
+
 function SellPage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('');
+    const [condition, setCondition] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aqui você pode enviar os dados do formulário para o backend
-        console.log('Dados do formulário:', { title, description, price, category });
-    }
+
+        const token = localStorage.getItem('accessToken');
+        if (!token) {
+            console.error('No access token found');
+            return;
+        }
+
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.id;
+
+        const formData = {
+            title,
+            description,
+            price,
+            category,
+            condition,
+            userId,
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create product');
+            }
+
+            console.log('Product created successfully');
+        } catch (error) {
+            console.error('Error creating product:', error.message);
+        }
+    };
 
     return (
         <>
@@ -59,11 +97,25 @@ function SellPage() {
                             {/* Adicione mais opções conforme necessário */}
                         </select>
                     </label>
+                    <label>
+                        Condição:
+                        <select
+                            value={condition}
+                            onChange={(e) => setCondition(e.target.value)}
+                            required
+                        >
+                            <option value="">Selecione...</option>
+                            <option value="NEW">Novo</option>
+                            <option value="USED">Usado</option>
+                            <option value="PARTIALLY_FUNCTIONAL">Parcialmente funcional</option>
+                            {/* Adicione mais opções conforme necessário */}
+                        </select>
+                    </label>
                     <button type="submit">Criar Anúncio</button>
                 </form>
             </div>
-        </>    
-    )
+        </>
+    );
 }
 
 export default SellPage;
