@@ -69,19 +69,17 @@ const Header = () => {
             </div>
             <div className="right">
                 <ul>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to='/about'>About</Link></li>
+                    <li><Link to='/'>Catálogo</Link></li>
                     {isAuthenticated ? (
                         <>
-                            <li><Link to="/profile" className='box'><GrUserManager />Profile</Link></li>
+                            <li><Link to="/profile" className='box'><GrUserManager />Página do usuário</Link></li>
 
                             <li><button onClick={handleLogout}>Logout</button></li>
                         </>
                     ) : (
                         <>
                             <li><Link to="/login">Log In</Link></li>
-                            <li><Link to="/register">Register</Link></li>
+                            <li><Link to="/register">Registro</Link></li>
                         </>
                     )}
                 </ul>

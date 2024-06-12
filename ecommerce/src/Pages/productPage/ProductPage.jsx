@@ -45,9 +45,9 @@ const ProductPage = () => {
                 </div>
                 <div className="textContainer">
                     <h3>{product.name}</h3>
-                    <p>Price: {product.price}</p>
+                    <p>Valor: R$ {product.price}</p>
                     <p>{product.description}</p>
-                    <button onClick={handleBuyNow}>Buy Now</button>
+                    <button onClick={handleBuyNow}>Compre Agora</button>
                 </div>
             </div>
             <SimilarProducts similarProducts={similarProducts} />

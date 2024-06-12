@@ -13,7 +13,7 @@ const SimilarProducts = ({ similarProducts }) => {
                         <div className="productItem">
                             <img src={similarProduct.image} alt={similarProduct.name} />
                             <p>{similarProduct.name}</p>
-                            <p>Price: {similarProduct.price}</p>
+                            <p>Valor: R$ {similarProduct.price}</p>
                         </div>
                     </Link>
                 ))}
