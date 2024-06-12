@@ -10,6 +10,7 @@ import Cadastro from './Pages/registro/Cadatro';
 import Profile from './Pages/profile/Profile';
 import ShoppingCart from './Pages/shoppingCart/ShoppingCart';
 import SellPage from './Pages/sellPage/SellPage';
+import TeacherList from './Pages/teacherList/TeacherList';
 
 function App() {
   
@@ -43,6 +44,10 @@ function App() {
       {
         path:"/sell",
         element: <SellPage />
+      },
+      {
+        path:"teacher-list",
+        element: <TeacherList/>
       },
     ]);
     

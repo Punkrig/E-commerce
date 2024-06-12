@@ -51,7 +51,6 @@ const ProductPage = () => {
                 </div>
             </div>
             <SimilarProducts similarProducts={similarProducts} />
-            {isModalOpen && <ShoppingCart onClose={closeModal} />}
         </>
     );
 };

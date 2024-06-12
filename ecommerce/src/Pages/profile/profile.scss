@@ -1,82 +1,61 @@
-:root {
-    --color1: #f6f6f6;
-    --color2: #e8e8e8;
-    --color3: #333333;
-    --color4: #990100;
-    --color5: #b90504;
-    --color5-dark: darken(#b90504, 10%);
-}
-
 .profile {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: var(--color1); // Fundo do perfil
+    border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: var(--color4); // Cor do texto
+    background-color: #f9f9f9;
     text-align: center;
 
     h2 {
-        font-size: 24px;
         margin-bottom: 20px;
     }
 
-    .user-avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 0 auto 20px; /* Centraliza a imagem */
-        border: 3px solid var(--color1); /* Adiciona uma borda branca ao redor da imagem */
+    .user-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
 
-    .user-details {
-        p {
-            margin-bottom: 5px;
-        }
-    }
-
-    .order-history {
-        h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .user-details {
+            text-align: left;
 
-            li {
-                font-size: 16px;
-                margin-bottom: 5px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-                padding-bottom: 5px;
+            p {
+                margin-bottom: 10px;
             }
         }
     }
 
-    .sell-button {
-        display: inline-block;
+    .sell-button, .list-button {
         padding: 10px 20px;
         font-size: 16px;
-        background-color: var(--color5); // Cor do botão
-        color: var(--color1); // Cor do texto do botão
         border: none;
         border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
         text-decoration: none;
-        margin-top: 20px;
-        transition: background-color 0.3s;
+        display: inline-block;
+        width: 150px; /* Adicionei largura fixa para os botões */
+        margin-right: 10px; /* Adicionei margem direita para separar os botões */
 
         &:hover {
-            background-color: var(--color5-dark); // Cor do botão ao passar o mouse
+            background-color: #0056b3;
         }
     }
 }

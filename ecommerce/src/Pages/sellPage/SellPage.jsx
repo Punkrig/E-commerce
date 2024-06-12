@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './sellPage.scss';
 import Header from '../../components/header/Header';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode'; // Mantendo a importação como solicitada
 
 function SellPage() {
     const [title, setTitle] = useState('');
@@ -12,45 +12,52 @@ function SellPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
+        // Verifica se há um token de acesso armazenado
         const token = localStorage.getItem('accessToken');
         if (!token) {
             console.error('No access token found');
             return;
         }
-
+    
+        // Decodifica o token para obter o ID do usuário
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.id;
-
+    
+        // Cria o objeto formData com o userId correto
         const formData = {
-            title,
-            description,
-            price,
-            category,
-            condition,
             userId,
+            product: {
+                title,
+                description,
+                price,
+                category,
+                condition,
+            }
         };
-
+    
+        console.log('Form Data:', formData); // Adicione este console.log para ver os dados que estão sendo passados
+    
         try {
-            const response = await fetch('http://localhost:3000/api/products', {
+            const response = await fetch(`http://localhost:3000/posts/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(formData, token),
             });
-
+            
             if (!response.ok) {
                 throw new Error('Failed to create product');
             }
-
+    
             console.log('Product created successfully');
         } catch (error) {
             console.error('Error creating product:', error.message);
         }
     };
-
+        
     return (
         <>
             <Header />
@@ -91,9 +98,7 @@ function SellPage() {
                             required
                         >
                             <option value="">Selecione...</option>
-                            <option value="eletronicos">Eletrônicos</option>
-                            <option value="moveis">Móveis</option>
-                            <option value="vestuario">Vestuário</option>
+                            <option value="ULTRASSONOGRAFIA">ULTRASSONOGRAFIA</option>
                             {/* Adicione mais opções conforme necessário */}
                         </select>
                     </label>
