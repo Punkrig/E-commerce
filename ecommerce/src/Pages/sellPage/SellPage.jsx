@@ -80,12 +80,10 @@ function SellPage() {
         try {
             const response = await fetch(`http://localhost:3000/posts/${postId}/pictures`, {
                 method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                },
+                
                 body: formData,
             });
-
+            
             if (!response.ok) {
                 const errorData = await response.json();
                 console.error('Backend error response:', errorData);

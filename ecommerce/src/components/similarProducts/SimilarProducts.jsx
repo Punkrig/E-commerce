@@ -3,17 +3,17 @@ import React from 'react';
 import './similarProducts.scss';
 import { Link } from 'react-router-dom';
 
-const SimilarProducts = ({ similarProducts }) => {
+const SimilarProducts = ({ similarProducts, products }) => {
     return (
         <div className="similarProducts">
             <h3>Produtos Semelhantes</h3>
             <div className="productList">
-                {similarProducts.map((similarProduct) => (
-                    <Link to={`/product/${similarProduct.id}`} key={similarProduct.id}>
+                {similarProducts.map((product) => (
+                    <Link to={`/product/${product.id}`} key={product.id}>
                         <div className="productItem">
-                            <img src={similarProduct.image} alt={similarProduct.name} />
-                            <p>{similarProduct.name}</p>
-                            <p>Valor: R$ {similarProduct.price}</p>
+                            <img src={product.image} alt={product.tittle} />
+                            <p>{product.name}</p>
+                            <p>Valor: R$ {product.price}</p>
                         </div>
                     </Link>
                 ))}
