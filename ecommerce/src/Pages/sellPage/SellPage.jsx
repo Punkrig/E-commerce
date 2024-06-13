@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './sellPage.scss';
 import Header from '../../components/header/Header';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
 function SellPage() {
     const [title, setTitle] = useState('');
@@ -138,7 +138,18 @@ function SellPage() {
                             required
                         >
                             <option value="">Selecione...</option>
-                            <option value="ULTRASSONOGRAFIA">ULTRASSONOGRAFIA</option>
+                            <option value="ULTRASSON">ULTRASSON</option>
+                            <option value="ELETROCARDIOGRAMA_E_C_G">ELETROCARDIOGRAMA_E_C_G</option>
+                            <option value="APARELHO_DE_RAIO_X">APARELHO_DE_RAIO_X</option>
+                            <option value="ESTETOSCOPIO">ESTETOSCOPIO</option>
+                            <option value="MONITOR_DE_PRESSAO_ARTERIAL">MONITOR_DE_PRESSAO_ARTERIAL</option>
+                            <option value="OXIMETRO_DE_PULSO">OXIMETRO_DE_PULSO</option>
+                            <option value="CENTRIFUGA">CENTRIFUGA</option>
+                            <option value="MICROSCOPIO">MICROSCOPIO</option>
+                            <option value="ANALISADOR_DE_SANGUE">ANALISADOR_DE_SANGUE</option>
+                            <option value="MANEQUINS_DE_SIMULACAO">MANEQUINS_DE_SIMULACAO</option>
+
+
                             {/* Adicione mais opções conforme necessário */}
                         </select>
                     </label>

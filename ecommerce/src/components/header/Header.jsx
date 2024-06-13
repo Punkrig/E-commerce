@@ -5,6 +5,7 @@ import { IoIosCart } from "react-icons/io";
 import { GrUserManager } from "react-icons/gr";
 import LittleCar from '../littleCar/LittleCar';
 import { jwtDecode } from 'jwt-decode'; // Mantendo a importação como solicitada
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -53,12 +54,15 @@ const Header = () => {
             }
         }
     }, []);
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
         setIsAuthenticated(false);
         setUserRole(null);
         console.log('User logged out'); // Confirma o logout do usuário
+        navigate('/');
+
     };
     console.log('User Role:', userRole); // Verifica o valor de userRole após a montagem do componente
 

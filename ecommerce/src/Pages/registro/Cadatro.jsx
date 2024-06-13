@@ -2,16 +2,15 @@ import React from 'react';
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Link, TextField, Typography, ThemeProvider } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme } from '@mui/material/styles';
-
+import { useNavigate } from 'react-router-dom';
 function SignUp() {
   const [isStudent, setIsStudent] = React.useState(false);
   const [isProfessor, setIsProfessor] = React.useState(false);
 
   const handleStudentChange = (event) => {
     setIsStudent(event.target.checked);
-    setIsProfessor(false); // Desmarca a opção de professor
+    setIsProfessor(false); // Desmarca a opção  de professor
   };
-
   const handleProfessorChange = (event) => {
     setIsProfessor(event.target.checked);
     setIsStudent(false); // Desmarca a opção de estudante
@@ -45,12 +44,14 @@ function SignUp() {
         throw new Error(responseData.message || 'Failed to register');
       }
   
+      // Redireciona para a página de login
+      window.location.href = '/login';
       console.log('Registered successfully');
     } catch (error) {
       console.error('Error registering:', error);
     }
   };
-
+  
   return (
     <ThemeProvider theme={createTheme()}>
       <Container component="main" maxWidth="xs">
@@ -78,7 +79,7 @@ function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Nome"
                   autoFocus
                 />
               </Grid>
@@ -87,7 +88,7 @@ function SignUp() {
                   required
                   fullWidth
                   id="registration"
-                  label="Registration"
+                  label="Registro"
                   name="registration"
                   autoComplete="family-name"
                 />
@@ -107,7 +108,7 @@ function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Senha"
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -118,7 +119,7 @@ function SignUp() {
                 required
                 fullWidth
                 name="phone"
-                label="Phone Number"
+                label="Telefone"
                 id="phone"
                 autoComplete="tel"
                 inputProps={{ pattern: "[0-9]*" }} // Aceita apenas números
@@ -127,11 +128,11 @@ function SignUp() {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox checked={isStudent} onChange={handleStudentChange} />}
-                  label="I am a student"
+                  label="Estudante"
                 />
                 <FormControlLabel
                   control={<Checkbox checked={isProfessor} onChange={handleProfessorChange} />}
-                  label="I am a TEACHER"
+                  label=" Professor"
                 />
               </Grid>
             </Grid>
@@ -145,8 +146,8 @@ function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link href="/login" variant="body2">
+                  Ja tem uma Conta? Sign in
                 </Link>
               </Grid>
             </Grid>
