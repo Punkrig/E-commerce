@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './sellPage.scss';
 import Header from '../../components/header/Header';
-import { jwtDecode } from 'jwt-decode'; // Mantendo a importação como solicitada
+import {jwtDecode} from 'jwt-decode';
 
 function SellPage() {
     const [title, setTitle] = useState('');
@@ -9,22 +9,21 @@ function SellPage() {
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('');
     const [condition, setCondition] = useState('');
+    const [image, setImage] = useState(null);
+    const [postId, setPostId] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
     
-        // Verifica se há um token de acesso armazenado
         const token = localStorage.getItem('accessToken');
         if (!token) {
             console.error('No access token found');
             return;
         }
     
-        // Decodifica o token para obter o ID do usuário
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.id;
     
-        // Cria o objeto formData com o userId correto
         const formData = {
             userId,
             product: {
@@ -36,7 +35,7 @@ function SellPage() {
             }
         };
     
-        console.log('Form Data:', formData); // Adicione este console.log para ver os dados que estão sendo passados
+        console.log('Form Data:', formData); // Verifique os dados no console
     
         try {
             const response = await fetch(`http://localhost:3000/posts/`, {
@@ -45,19 +44,60 @@ function SellPage() {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify(formData, token),
+                body: JSON.stringify(formData),
             });
             
             if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Backend error response:', errorData);
                 throw new Error('Failed to create product');
             }
     
-            console.log('Product created successfully');
+            const data = await response.json();
+            setPostId(data.id);
+            console.log('Product created successfully', data);
         } catch (error) {
             console.error('Error creating product:', error.message);
         }
     };
-        
+
+    const handleImageUpload = async (e) => {
+        e.preventDefault();
+
+        if (!postId) {
+            console.error('Post ID is not available');
+            return;
+        }
+
+        if (!image) {
+            console.error('No image selected');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('picture', image);
+
+        try {
+            const response = await fetch(`http://localhost:3000/posts/${postId}/pictures`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                },
+                body: formData,
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Backend error response:', errorData);
+                throw new Error('Failed to upload image');
+            }
+
+            console.log('Image uploaded successfully');
+        } catch (error) {
+            console.error('Error uploading image:', error.message);
+        }
+    };
+
     return (
         <>
             <Header />
@@ -118,6 +158,18 @@ function SellPage() {
                     </label>
                     <button type="submit">Criar Anúncio</button>
                 </form>
+
+                {postId && (
+                    <form onSubmit={handleImageUpload}>
+                        <h3>Envie uma Imagem</h3>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
+                        />
+                        <button type="submit">Upload Imagem</button>
+                    </form>
+                )}
             </div>
         </>
     );

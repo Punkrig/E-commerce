@@ -1,12 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './teacherList.scss';
 import Header from '../../components/header/Header';
 import { Link } from 'react-router-dom';
+
 const TeacherList = () => {
     const [creatingList, setCreatingList] = useState(false);
     const [listTitle, setListTitle] = useState('');
     const [materials, setMaterials] = useState([]);
     const [newMaterial, setNewMaterial] = useState('');
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [editMaterialValue, setEditMaterialValue] = useState('');
+    const [teacherLists, setTeacherLists] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/teacher-lists', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (Array.isArray(data)) {
+                setTeacherLists(data);
+            } else {
+                setTeacherLists([]);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            setTeacherLists([]);
+        });
+    }, []);
 
     const handleCreateList = () => {
         setCreatingList(true);
@@ -24,9 +50,16 @@ const TeacherList = () => {
         setMaterials(updatedMaterials);
     };
 
-    const handleEditMaterial = (index, newName) => {
-        const updatedMaterials = materials.map((material, i) => i === index ? newName : material);
+    const handleEditMaterial = (index) => {
+        setEditingIndex(index);
+        setEditMaterialValue(materials[index]);
+    };
+
+    const handleSaveEditMaterial = () => {
+        const updatedMaterials = materials.map((material, i) => i === editingIndex ? editMaterialValue : material);
         setMaterials(updatedMaterials);
+        setEditingIndex(null);
+        setEditMaterialValue('');
     };
 
     const handleSubmit = () => {
@@ -49,6 +82,7 @@ const TeacherList = () => {
             setCreatingList(false);
             setListTitle('');
             setMaterials([]);
+            setTeacherLists([...teacherLists, data]);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -88,11 +122,20 @@ const TeacherList = () => {
                         <ul className="materialList">
                             {materials.map((material, index) => (
                                 <li key={index} className="materialItem">
-                                    <input 
-                                        type="text" 
-                                        value={material} 
-                                        onChange={(e) => handleEditMaterial(index, e.target.value)} 
-                                    />
+                                    {editingIndex === index ? (
+                                        <input 
+                                            type="text" 
+                                            value={editMaterialValue} 
+                                            onChange={(e) => setEditMaterialValue(e.target.value)} 
+                                        />
+                                    ) : (
+                                        <span>{material}</span>
+                                    )}
+                                    {editingIndex === index ? (
+                                        <button onClick={handleSaveEditMaterial}>Salvar</button>
+                                    ) : (
+                                        <button onClick={() => handleEditMaterial(index)}>Editar</button>
+                                    )}
                                     <button onClick={() => handleDeleteMaterial(index)}>Excluir</button>
                                 </li>
                             ))}
@@ -109,6 +152,23 @@ const TeacherList = () => {
                         <button className="submitButton" onClick={handleSubmit}> <Link to='/profile'>Enviar Lista</Link></button>
                     </>
                 )}
+                <div className="existingLists">
+                    <h2>Listas de Materiais Criadas</h2>
+                    {teacherLists.length === 0 ? (
+                        <p>Nenhuma lista criada ainda.</p>
+                    ) : (
+                        teacherLists.map((list, index) => (
+                            <div key={index} className="teacherList">
+                                <h3>{list.title}</h3>
+                                <ul>
+                                    {Array.isArray(list.materials) ? list.materials.map((material, i) => (
+                                        <li key={i}>{material}</li>
+                                    )) : <li>Nenhum material</li>}
+                                </ul>
+                            </div>
+                        ))
+                    )}
+                </div>
             </div>
         </>
     );
